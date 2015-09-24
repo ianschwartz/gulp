@@ -1,0 +1,14 @@
+<%= form_for @trail do |f| %>
+
+  <div>
+    <%= f.label :name, "Trail Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :start, "Start Time" %>
+    <%= f.datetime_select :start, :ampm => true, :minute_step => 15 %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

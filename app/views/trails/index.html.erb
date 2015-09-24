@@ -1,8 +1,10 @@
 <% if @trails.present? %> 
   <% @trails.each do |t| %>
     <h2><%= t.name %></h2>
-    <p><%= distance_of_time_in_words(Time.now, t.start) %></p>
+    <p><%= t.start.strftime("%B %d, %Y") %> <%= link_to 'Edit', edit_trail_path(t) %> <%= link_to 'Delete', t, method: :delete, data: { confirm: "You sure?" } %></p>
   <% end %>
 <% else %>
   Nothing yet
 <% end %>
+
+<h3><%= link_to 'Add a new trail!', new_trail_path %></h3>
