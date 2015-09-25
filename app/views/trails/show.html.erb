@@ -4,5 +4,10 @@
   <%= @trail.start.strftime("%B %d, %Y") %><br />
   Time:<br />
   <%= @trail.start.strftime("%k:%M HST") %><br />
+</p>
 
+<p>
+  <% if @trail.locations.any? %>
+    <%= render @trail.locations %>
+  <% end %>
 </p>

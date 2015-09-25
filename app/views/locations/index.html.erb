@@ -1,0 +1,33 @@
+<%= render @locations %>
+New Bar Location
+<%= form_for @bar_location do |f| -%>
+  <div>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :address, "Address" %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+  </div>
+<% end -%>
+New Outdoor Location
+<%= form_for @outdoor_location do |f| -%>
+  <div>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :longitude, "Longitude" %>
+    <%= f.text_field :longitude %>
+  </div>
+  <div>
+    <%= f.label :latitude, "Latitude" %>
+    <%= f.text_field :latitude %>
+  </div>
+  <div>
+    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+  </div>
+<% end -%>

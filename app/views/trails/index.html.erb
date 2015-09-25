@@ -1,6 +1,6 @@
 <% if @trails.present? %> 
   <% @trails.each do |t| %>
-    <h2><%= t.name %></h2>
+    <h2><%= link_to t.name, t %></h2>
     <p><%= t.start.strftime("%B %d, %Y") %> <%= link_to 'Edit', edit_trail_path(t) %> <%= link_to 'Delete', t, method: :delete, data: { confirm: "You sure?" } %></p>
   <% end %>
 <% else %>
