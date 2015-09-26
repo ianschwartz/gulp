@@ -11,12 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925181528) do
+ActiveRecord::Schema.define(version: 20150926131718) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string "name"
     t.string "address"
   end
+
+  create_table "checks", force: :cascade do |t|
+    t.integer  "trail_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "checktype"
+  end
+
+  add_index "checks", ["location_id"], name: "index_checks_on_location_id"
+  add_index "checks", ["trail_id"], name: "index_checks_on_trail_id"
 
   create_table "locations", force: :cascade do |t|
     t.datetime "created_at", null: false

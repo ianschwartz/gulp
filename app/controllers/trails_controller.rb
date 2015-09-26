@@ -1,4 +1,5 @@
 class TrailsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_trail, except: [:index, :new, :create]
 
   def index
@@ -21,6 +22,7 @@ class TrailsController < ApplicationController
   end
 
   def show
+    @check = @trail.checks.new
   end
 
   def edit

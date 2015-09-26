@@ -11,3 +11,15 @@
     <%= render @trail.locations %>
   <% end %>
 </p>
+
+<%= form_for @check do |f| -%>
+  <div>
+    <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <%= f.hidden_field :trail_id, value: @trail.id %>
+  </div>
+  <div>
+    <%= f.select :checktype, 
+      options_for_select([['Prelube','Prelube'],['Beer Check','Beer Check'],['On-In','On-In']], params[:checktype]) %>
+  </div>
+  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>

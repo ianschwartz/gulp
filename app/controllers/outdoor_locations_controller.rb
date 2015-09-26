@@ -1,4 +1,5 @@
 class OutdoorLocationsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     place = build_place

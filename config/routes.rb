@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :locations, except: [:create]
   resources :bar_locations, only: [:create]
   resources :outdoor_locations, only: [:create]
+  resources :checks, only: [:create]
   root 'trails#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
