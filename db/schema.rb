@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926131718) do
+ActiveRecord::Schema.define(version: 20150928204757) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.float  "latitude"
+    t.float  "longitude"
+    t.string "city"
+    t.string "state"
   end
 
   create_table "checks", force: :cascade do |t|
@@ -32,18 +36,18 @@ ActiveRecord::Schema.define(version: 20150926131718) do
   create_table "locations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "trail_id"
     t.string   "place_type"
     t.string   "place_id"
   end
 
   add_index "locations", ["place_id", "place_type"], name: "index_locations_on_place_id_and_place_type"
-  add_index "locations", ["trail_id"], name: "index_locations_on_trail_id"
 
   create_table "outdoor_locations", force: :cascade do |t|
     t.string "name"
     t.float  "longitude"
     t.float  "latitude"
+    t.string "city"
+    t.string "state"
   end
 
   create_table "trails", force: :cascade do |t|

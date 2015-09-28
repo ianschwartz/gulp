@@ -20,6 +20,6 @@ class BarLocationsController < ApplicationController
   end
 
   def bar_location_parameters
-    params.require(:bar_location).permit(:name, :address)
+    params.require(:bar_location).permit(:name, :address, :city, :state, :latitude, :longitude)
   end
 end

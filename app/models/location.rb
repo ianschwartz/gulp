@@ -4,10 +4,14 @@ class Location < ActiveRecord::Base
   belongs_to :place, polymorphic: true
 
   def mappable
-    self.place.mappable
+    place.mappable
   end
 
   def name
-    self.place.name
+    place.name
+  end
+
+  def trail
+    place.trail
   end
 end

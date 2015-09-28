@@ -20,6 +20,6 @@ class OutdoorLocationsController < ApplicationController
   end
 
   def outdoor_location_parameters
-    params.require(:outdoor_location).permit(:name, :longitude, :latitude)
+    params.require(:outdoor_location).permit(:name, :longitude, :latitude, :city, :state)
   end
 end
