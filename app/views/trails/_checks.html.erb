@@ -2,6 +2,8 @@
   <% if c.valid? %>
     <h4><%= c.checktype %></h4>
     <%= render c.location %>
-    <%= link_to 'Delete Check', c, method: :delete, class: 'btn btn-sm btn-primary' %>
+    <% if c.trail.permissions(current_user) %>
+      <%= link_to 'Delete Check', c, method: :delete, class: 'btn btn-sm btn-primary' %>
+    <% end %>
   <% end %>
 <% end %>

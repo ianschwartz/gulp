@@ -1,17 +1,15 @@
 class TrailsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_trail, except: [:index, :new, :create]
+  before_action :correct_user, only: [:update, :destroy]
 
   def index
     @trails = Trail.all
     @trail = Trail.new
   end
 
-  def new
-  end
-
   def create
-    @trail = Trail.new(trail_params)
+    @trail = current_user.trails.new(trail_params)
     if @trail.save
       flash[:notice] = "Trail added!"
       redirect_to @trail
@@ -54,5 +52,11 @@ class TrailsController < ApplicationController
 
   def set_trail
     @trail = Trail.find(params[:id])
+  end
+
+  def correct_user
+    @trail = Trail.find(params[:id])
+    flash[:alert] = "You aren't authorized to edit this trail"
+    redirect_to @trail unless @trail.permissions(current_user)
   end
 end

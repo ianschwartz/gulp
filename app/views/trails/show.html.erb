@@ -1,4 +1,4 @@
-<% if user_signed_in? %> 
+<% if @trail.permissions(current_user) %> 
   <ul class="buttons">
     <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Trail Details</button> </li>
       <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Add a Check</button> </li>
