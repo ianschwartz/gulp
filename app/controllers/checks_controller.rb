@@ -12,6 +12,14 @@ class ChecksController < ApplicationController
     end
   end
 
+  def destroy
+    @check = Check.find(params[:id])
+    @check.destroy
+    flash[:alert] = "Check deleted"
+    redirect_to @check.trail
+  end
+
+
   private
 
   def check_params

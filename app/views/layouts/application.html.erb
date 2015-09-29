@@ -10,8 +10,9 @@
 <div class="container">
     <h1 id="logo">GULP</h1>
     <nav class="row">
-      <ul class="col-sm-4 col-sm-offset-4">
+      <ul class="col-sm-6 col-sm-offset-3">
         <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'All Locations', locations_path %>
         <% if user_signed_in? %>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %>

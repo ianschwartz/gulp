@@ -1,0 +1,7 @@
+<% @trail.checks.each do |c| %>
+  <% if c.valid? %>
+    <h4><%= c.checktype %></h4>
+    <%= render c.location %>
+    <%= link_to 'Delete Check', c, method: :delete, class: 'btn btn-sm btn-primary' %>
+  <% end %>
+<% end %>

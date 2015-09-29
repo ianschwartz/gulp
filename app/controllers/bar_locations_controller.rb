@@ -8,7 +8,18 @@ class BarLocationsController < ApplicationController
       flash[:notice] = "Location added!"
       redirect_to locations_path
     else
-      flash[:alert] = "Location could not be saved. #{@location.errors.full_messages}"
+      flash[:alert] = "Location could not be saved. #{@bar_location.errors.full_messages}"
+      redirect_to :back
+    end
+  end
+  
+  def update
+    @bar_location = BarLocation.find(params[:id])
+    if @bar_location.update_attributes(bar_location_parameters)
+      flash[:notice] = "Location updated!"
+      redirect_to :back
+    else
+      flash[:alert] = "Location could not be saved. #{@bar_location.errors.full_messages}"
       redirect_to :back
     end
   end

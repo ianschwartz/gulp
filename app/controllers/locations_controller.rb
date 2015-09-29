@@ -13,6 +13,11 @@ class LocationsController < ApplicationController
   end
 
   def show
+    if @location.place_type == 'BarLocation'
+      @bar_location = BarLocation.find(@location.place_id)
+    else
+      @outdoor_location = OutdoorLocation.find(@location.place_id)
+    end
   end
 
   def edit
@@ -29,6 +34,7 @@ class LocationsController < ApplicationController
   end
 
   def destroy
+    @location.place.destroy
     @location.destroy
     flash[:alert] = "Location deleted"
     redirect_to root_path

@@ -1,6 +1,36 @@
+<% if user_signed_in? %>
+  <ul class="buttons">
+    <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Location Details</button></li>
+    <li><%= link_to "Delete Location", @location, class: "btn btn-info btn-lg", method: :delete %></li>
+  </ul>
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit location details</h4>
+        </div>
+        <div class="modal-body">
+          <% if @location.place_type == "BarLocation" %>
+            <%= render 'bar_form' %>
+          <% else %>
+            <%= render 'outdoor_form' %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<% end %> 
 <%= render @location %>
 
-<a href="https://maps.google.com?q=<%= @location.mappable %>
+<a href="https://maps.google.com?q=<%= @location.latitude %>,<%= @location.longitude %>
 ">
   <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x400&maptype=roadmap\&markers=size:mid%7Ccolor:red%7C<%= @location.mappable %>&key=AIzaSyB-ff0StKT8E_pKvXCiZBYEOsUVryVA3z4">
 </a>

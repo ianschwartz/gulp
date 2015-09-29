@@ -13,6 +13,18 @@ class OutdoorLocationsController < ApplicationController
     end
   end
 
+  def update
+    @outdoor_location = OutdoorLocation.find(params[:id])
+    if @outdoor_location.update_attributes(outdoor_location_parameters)
+      flash[:notice] = "Location updated!"
+      redirect_to :back
+    else
+      flash[:alert] = "Location could not be saved. #{@outdoor_location.errors.full_messages}"
+      redirect_to :back
+    end
+  end
+
+
   private
 
   def build_place

@@ -23,6 +23,8 @@ class TrailsController < ApplicationController
 
   def show
     @check = @trail.checks.new
+    @bar_location = BarLocation.new
+    @outdoor_location = OutdoorLocation.new
   end
 
   def edit

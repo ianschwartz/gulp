@@ -1,0 +1,14 @@
+<%= form_for @check do |f| -%>
+  <b>Add a check:</b>
+  <div>
+    <%= f.label :nearby_locations %><br/>
+    <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <%= f.hidden_field :trail_id, value: @trail.id %>
+  </div>
+  <div>
+    <%= f.label :type_of_check %><br/>
+    <%= f.select :checktype, 
+      options_for_select([['Prelube','Prelube'],['Beer Check','Beer Check'],['On-In','On-In']], params[:checktype]) %>
+  </div>
+  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+<% end -%>

@@ -14,10 +14,25 @@ nav ul {
   list-style: none;
   li {
     display: inline;
+    padding: 0 5px;
+    :hover {
+      background-color: #000F9F;
+      color: #6DBED7;
+    }
   }
 }
 
 .rightbutton {
   position: absolute;
   right: 3%;
+}
+
+.buttons{ 
+  position: absolute;
+  right: 3%;
+  li {
+    padding: 5% 0;
+    list-style: none;
+    display: block;
+  }
 }

@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :trails, except: [:new, :edit]
   resources :locations, except: [:create]
-  resources :bar_locations, only: [:create]
-  resources :outdoor_locations, only: [:create]
-  resources :checks, only: [:create]
+  resources :bar_locations, only: [:create, :update]
+  resources :outdoor_locations, only: [:create, :update]
+  resources :checks, only: [:create, :destroy]
   root 'trails#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,10 @@
-<% if user_signed_in? %>
-  <button type="button" class="rightbutton btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Trail Details</button>  <!-- Modal -->
+<% if user_signed_in? %> 
+  <ul class="buttons">
+    <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Trail Details</button> </li>
+      <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Add a Check</button> </li>
+      <li><%= link_to "Delete Trail", @trail, class: "btn btn-danger btn-lg", method: :delete, data: {confirm: "You sure?"} %></li>
+  </ul>
+  <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -19,6 +24,49 @@
       
     </div>
   </div>
+    <div class="modal fade" id="newlocation" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add a Location</h4>
+        </div>
+        <div class="modal-body">
+          Add a bar location:
+          <%= render 'locations/bar_form' %>
+          Add an outdoor location:
+          <%= render 'locations/outdoor_form' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add a Check</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'add_check' %>
+        </div>
+        <div class="modal-footer">
+        <div class="text-left">Don't see what you're looking for?<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#newlocation" data-dismiss="modal">Add a Check</button></div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 <% end %> 
 <h3><%= @trail.name %></h3>
 <p>
@@ -28,20 +76,4 @@
   <%= @trail.start.strftime("%k:%M HST") %><br />
 </p>
 
-<p>
-  <% if @trail.locations.any? %>
-    <%= render @trail.locations %>
-  <% end %>
-</p>
-
-<%= form_for @check do |f| -%>
-  <div>
-    <%= f.collection_select :location_id, Location.all, :id, :name %>
-    <%= f.hidden_field :trail_id, value: @trail.id %>
-  </div>
-  <div>
-    <%= f.select :checktype, 
-      options_for_select([['Prelube','Prelube'],['Beer Check','Beer Check'],['On-In','On-In']], params[:checktype]) %>
-  </div>
-  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-<% end -%>
+<%= render 'checks' %>

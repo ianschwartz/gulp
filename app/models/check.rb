@@ -4,4 +4,8 @@ class Check < ActiveRecord::Base
 
   validates :trail_id, presence: true
   validates :location_id, presence: true
+
+  def name
+    location.name
+  end
 end

@@ -3,6 +3,6 @@ class BarLocation < ActiveRecord::Base
   after_validation :geocode
 
   def mappable
-    address + ', ' + city + ', ' + state
+    name + ', ' + address + ', ' + city + ', ' + state
   end
 end
