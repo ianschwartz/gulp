@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  has_many :checks
+  has_many :checks, dependent: :destroy
   has_many :trails, through: :checks
   belongs_to :place, polymorphic: true
 
