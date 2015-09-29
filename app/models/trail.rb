@@ -13,4 +13,8 @@ class Trail < ActiveRecord::Base
   def permissions(u)
     user == u
   end
+
+  def over
+    start < (Time.now + (2*7*24*60*60))
+  end
 end

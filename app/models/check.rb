@@ -8,4 +8,8 @@ class Check < ActiveRecord::Base
   def name
     location.name
   end
+
+  def visible?(u)
+    trail.permissions(u) || trail.over || checktype == "Prelube"
+  end
 end

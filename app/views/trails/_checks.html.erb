@@ -1,5 +1,5 @@
 <% @trail.checks.each do |c| %>
-  <% if c.valid? %>
+  <% if c.valid? && c.visible?(current_user) %>
     <h4><%= c.checktype %></h4>
     <%= render c.location %>
     <% if c.trail.permissions(current_user) %>
