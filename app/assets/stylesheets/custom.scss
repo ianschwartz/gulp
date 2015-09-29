@@ -3,10 +3,17 @@ body {
   padding-left: 2%;
   padding-right: 2%;
 }
-#logo {
-  color: red;
-  text-align: center;
-  font-weight: bolder;
+.logo {
+  img {
+    display: block;
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 8%;
+  }
+  :hover {
+    background-color: #000F9F;
+  }
 }
 
 nav ul {
