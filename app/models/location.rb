@@ -7,6 +7,14 @@ class Location < ActiveRecord::Base
     place.mappable
   end
 
+  def latitude
+    place.latitude
+  end
+
+  def longitude
+    place.longitude
+  end
+
   def name
     place.name
   end
