@@ -12,4 +12,12 @@ class Check < ActiveRecord::Base
   def visible?(u)
     trail.permissions(u) || trail.over || checktype == "Prelube"
   end
+
+  def start
+    trail.start
+  end
+
+  def checklist
+    trails.order(start: :desc)
+  end
 end

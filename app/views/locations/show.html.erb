@@ -28,7 +28,16 @@
     </div>
   </div>
 <% end %> 
+
 <%= render @location %>
+
+<% @location.checklist.each do |c| %>
+  <ul>
+    <% if c.visible?(current_user) %>
+      <li><%= c.checktype %> for <%= link_to c.trail.name, c.trail %> on <%= c.trail.startdate %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <a href="https://maps.google.com?q=<%= @location.latitude %>,<%= @location.longitude %>
 ">

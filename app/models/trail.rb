@@ -1,4 +1,6 @@
 class Trail < ActiveRecord::Base
+  default_scope {order("start DESC")}
+
   validates :name, presence: true
 
   has_many :checks, dependent: :destroy
@@ -15,6 +17,18 @@ class Trail < ActiveRecord::Base
   end
 
   def over
-    start < (Time.now + (2*7*24*60*60))
+    if startdate < Time.now.strftime("%B %d, %Y")
+      false
+    else
+      true
+    end
+  end
+
+  def startdate
+    start.strftime("%B %d, %Y")
+  end
+
+  def prelube
+    checks.where(checktype: 'Prelube')
   end
 end

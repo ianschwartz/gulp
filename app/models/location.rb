@@ -19,7 +19,8 @@ class Location < ActiveRecord::Base
     place.name
   end
 
-  def trail
-    place.trail
+  def checklist
+    checks.all.sort_by(&:start).reverse
   end
+
 end
