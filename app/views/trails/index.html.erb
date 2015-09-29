@@ -1,10 +1,32 @@
-<% if @trails.present? %> 
-  <% @trails.each do |t| %>
-    <h2><%= link_to t.name, t %></h2>
-    <p><%= t.start.strftime("%B %d, %Y") %> <%= link_to 'Edit', edit_trail_path(t) %> <%= link_to 'Delete', t, method: :delete, data: { confirm: "You sure?" } %></p>
+<% if user_signed_in? %>
+  <button type="button" class="rightbutton btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Create a Trail!</button>  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add a new trail</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'form' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<% end %>  
+<div>
+  <% if @trails.present? %> 
+    <% @trails.each do |t| %>
+      <h3><%= link_to t.name, t %></h3>
+      <p><%= t.start.strftime("%B %d, %Y") %> <%= link_to 'Edit', edit_trail_path(t) %> <%= link_to 'Delete', t, method: :delete, data: { confirm: "You sure?" } %></p>
+    <% end %>
+  <% else %>
+    Nothing yet
   <% end %>
-<% else %>
-  Nothing yet
-<% end %>
-
-<h3><%= link_to 'Add a new trail!', new_trail_path %></h3>
+</div>

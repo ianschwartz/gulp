@@ -1,0 +1,23 @@
+body {
+  background-color: #DDDFFF;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+#logo {
+  color: red;
+  text-align: center;
+  font-weight: bolder;
+}
+
+nav ul {
+  text-align: center;
+  list-style: none;
+  li {
+    display: inline;
+  }
+}
+
+.rightbutton {
+  position: absolute;
+  right: 3%;
+}

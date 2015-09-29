@@ -4,10 +4,10 @@ class TrailsController < ApplicationController
 
   def index
     @trails = Trail.all
+    @trail = Trail.new
   end
 
   def new
-    @trail = Trail.new
   end
 
   def create

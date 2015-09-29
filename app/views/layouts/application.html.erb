@@ -7,23 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1>GULP</h1>
-  <div>
-    <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-      <% end %>
-    </ul>
+<div class="container">
+    <h1 id="logo">GULP</h1>
+    <nav class="row">
+      <ul class="col-sm-4 col-sm-offset-4">
+        <li><%= link_to 'Home', root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="row">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    
+      <%= yield %>
+    </div>
   </div>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-  <%= yield %>
-
 </body>
 </html>
