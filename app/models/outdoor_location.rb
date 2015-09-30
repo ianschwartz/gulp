@@ -2,6 +2,6 @@ class OutdoorLocation < ActiveRecord::Base
   geocoded_by :name
   after_validation :geocode
   def mappable
-    name + ", " + city + ", " + state
+    latitude + ", " + longitude + ", " + city + ", " + state
   end
 end
