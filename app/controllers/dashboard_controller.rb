@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
     if !user_signed_in?
       @trails = Trail.upcoming
     else
-      @trails = current_user.trails.upcoming
+      @trails = current_user.feed
     end
     @next = @trails.last
   end

@@ -23,6 +23,7 @@ class TrailsController < ApplicationController
     @check = @trail.checks.new
     @bar_location = BarLocation.new
     @outdoor_location = OutdoorLocation.new
+    @comment = @trail.comments.new
   end
 
   def edit

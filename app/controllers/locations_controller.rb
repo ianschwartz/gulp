@@ -18,6 +18,7 @@ class LocationsController < ApplicationController
     else
       @outdoor_location = OutdoorLocation.find(@location.place_id)
     end
+    @comment = @location.comments.new
   end
 
   def edit

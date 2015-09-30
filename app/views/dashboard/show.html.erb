@@ -3,11 +3,11 @@
     <h3>Next Trail:</h3>
     <%= link_to @next.name, @next %>, <%= @next.startdate %><br />
     <% if @next.prelube.present? %>
-      Prelube: <%= link_to @next.prelube.name, @next.prelube %><br />
+      Prelube: <%= link_to @next.prelube.name, @next.prelube.location %><br />
     <% end %>
     When: <%= @next.startdate %>, <%= @next.starttime %>
   </div>
 </div>
 <div class="col-sm-12">
-  <%= render current_user.feed %>
+  <%= render @trails %>
 </div>

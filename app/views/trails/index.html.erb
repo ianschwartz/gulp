@@ -22,14 +22,7 @@
 <% end %>  
 <div>
   <% if @trails.present? %> 
-    <% @trails.each do |t| %>
-      <h3><%= link_to t.name, t %></h3>
-      <p>created by <%= t.creator %></p>
-      <p><%= t.start.strftime("%B %d, %Y") %></p>
-      <% if user_signed_in? && t.permissions(current_user) %>
-        <%= link_to 'Delete', t, method: :delete, data: { confirm: "You sure?" } %>
-        <% end %>
-    <% end %>
+    <%= render 'trail' %>
   <% else %>
     Nothing yet
   <% end %>

@@ -1,6 +1,7 @@
 class Location < ActiveRecord::Base
   has_many :checks, dependent: :destroy
   has_many :trails, through: :checks
+  has_many :comments, as: :commentable
   belongs_to :place, polymorphic: true
 
   def mappable

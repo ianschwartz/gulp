@@ -1,0 +1,8 @@
+<% if comment.valid? %>
+  <li><%= comment.user.email %> said:<br />
+  <%= comment.body %>
+  <% if comment.user == current_user %>
+   <br/><%= link_to 'Edit Comment', edit_comment_path(comment), class: "btn btn-primary btn-sm" %><br/>
+   <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm"  %>
+  <% end %>
+<% end %>
