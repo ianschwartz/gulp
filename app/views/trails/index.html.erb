@@ -1,29 +1,35 @@
-<% if user_signed_in? %>
-  <button type="button" class="rightbutton btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Create a Trail!</button>  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add a new trail</h4>
-        </div>
-        <div class="modal-body">
-          <%= render 'form' %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-<% end %>  
-<div>
+<div class="col-sm-6">
   <% if @trails.present? %> 
-    <%= render 'trail' %>
+    <%= render @trails %>
   <% else %>
     Nothing yet
   <% end %>
+</div>
+
+<div class="col-sm-6">
+  <% if user_signed_in? %>
+    <ul class="buttons">
+      <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Create a Trail!</button></li>
+    </ul>
+<!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add a new trail</h4>
+          </div>
+          <div class="modal-body">
+            <%= render 'form' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  <% end %>  
 </div>

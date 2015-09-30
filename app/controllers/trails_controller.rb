@@ -4,7 +4,7 @@ class TrailsController < ApplicationController
   before_action :correct_user, only: [:update, :destroy]
 
   def index
-    @trails = Trail.all
+    @trails = Trail.calendar
     @trail = Trail.new
   end
 

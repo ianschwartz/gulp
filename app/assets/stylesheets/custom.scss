@@ -1,9 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
 body {
   background-color: #DDDFFF;
   padding-left: 2%;
   padding-right: 2%;
+  font-family: 'Lato', sans-serif;
+  h1, h2, h3, h4 {
+    font-family: 'Oswald', sans-serif;
+  }
 }
 .logo {
+  font-family: 'Oswald', sans-serif;
   img {
     display: block;
     width: 50%;
@@ -16,15 +24,18 @@ body {
   }
 }
 
-nav ul {
+nav {
+  clear: both;
+  ul {
   text-align: center;
   list-style: none;
-  li {
-    display: inline;
-    padding: 0 5px;
-    :hover {
-      background-color: #000F9F;
-      color: #6DBED7;
+    li {
+      display: inline;
+      padding: 0 5px;
+      :hover {
+        background-color: #000F9F;
+        color: #6DBED7;
+      }
     }
   }
 }
@@ -34,13 +45,11 @@ nav ul {
   right: 3%;
 }
 
-.buttons{ 
-  position: absolute;
-  right: 3%;
+.buttons {
   li {
-    padding: 5% 0;
-    list-style: none;
-    display: block;
+      padding: 5% 0;
+      padding-left: -25%;
+      list-style: none;
   }
 }
 
@@ -49,4 +58,19 @@ nav ul {
   background-color: #A0E99E;
   text-align: center;
   padding: 3% 0;
+}
+
+.location {
+  text-decoration: underline;
+  text-align: center;
+  background-color: #002FBD;
+  color: #C0D1E6;
+  padding: 2% 0;
+  a {
+    color: #D4EACD;
+  }
+}
+
+.checklist {
+  clear: left;
 }

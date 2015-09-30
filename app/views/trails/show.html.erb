@@ -1,105 +1,108 @@
-<% if user_signed_in? %>
-  <ul class="buttons">
-    <% if @trail.permissions(current_user) %> 
-      <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Trail Details</button> </li>
-      <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Add a Check</button> </li>
-      <li><%= link_to "Delete Trail", @trail, class: "btn btn-danger btn-lg", method: :delete, data: {confirm: "You sure?"} %></li>
-    <% end %>
-    <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#commentform">Leave a Comment</button></li>
-  </ul>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Edit trail details</h4>
-        </div>
-        <div class="modal-body">
-          <%= render 'form' %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  <div class="modal fade" id="commentform" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Leave a Comment</h4>
-        </div>
-        <div class="modal-body">
-          <%= render 'comments/form' %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-    <div class="modal fade" id="newlocation" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add a Location</h4>
-        </div>
-        <div class="modal-body">
-          Add a bar location:
-          <%= render 'locations/bar_form' %>
-          Add an outdoor location:
-          <%= render 'locations/outdoor_form' %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+<div class="col-sm-12 location">
+  <h2><%= @trail.name %></h2>
+  <p>
+    Date: <%= @trail.start.strftime("%B %d, %Y") %><br />
+    Time: <%= @trail.start.strftime("%k:%M HST") %><br />
+  </p>
+</div>
 
-  <div class="modal fade" id="myModal3" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add a Check</h4>
-        </div>
-        <div class="modal-body">
-          <%= render 'add_check' %>
-        </div>
-        <div class="modal-footer">
-        <div class="text-left">Don't see what you're looking for?<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#newlocation" data-dismiss="modal">Add a Check</button></div>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-<% end %> 
-<h3><%= @trail.name %></h3>
-<p>
-  Date:<br />
-  <%= @trail.start.strftime("%B %d, %Y") %><br />
-  Time:<br />
-  <%= @trail.start.strftime("%k:%M HST") %><br />
-</p>
-
-<div>
+<div class="col-sm-6">
   <%= render 'checks' %>
+</div>
+
+<div class="col-sm-6">
+  <% if user_signed_in? %>
+    <ul class="buttons">
+      <% if @trail.permissions(current_user) %> 
+        <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Trail Details</button> </li>
+        <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Add a Check</button> </li>
+        <li><%= link_to "Delete Trail", @trail, class: "btn btn-danger btn-lg", method: :delete, data: {confirm: "You sure?"} %></li>
+      <% end %>
+      <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#commentform">Leave a Comment</button></li>
+    </ul>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit trail details</h4>
+          </div>
+          <div class="modal-body">
+            <%= render 'form' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="modal fade" id="commentform" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Leave a Comment</h4>
+          </div>
+          <div class="modal-body">
+            <%= render 'comments/form' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+      <div class="modal fade" id="newlocation" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add a Location</h4>
+          </div>
+          <div class="modal-body">
+            Add a bar location:
+            <%= render 'locations/bar_form' %>
+            Add an outdoor location:
+            <%= render 'locations/outdoor_form' %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal3" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Add a Check</h4>
+          </div>
+          <div class="modal-body">
+            <%= render 'add_check' %>
+          </div>
+          <div class="modal-footer">
+          <div class="text-left">Don't see what you're looking for?<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#newlocation" data-dismiss="modal">Add a Check</button></div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  <% end %> 
 </div>
 
 <div>

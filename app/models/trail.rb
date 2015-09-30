@@ -1,6 +1,6 @@
 class Trail < ActiveRecord::Base
-  default_scope { order("start DESC") }
-  scope :upcoming, -> { where('start >= ?', Date.today).order(:start) }
+  scope :upcoming, -> { where('start >= ?', Date.today).order('start DESC') }
+  scope :calendar, -> { where('start >= ?', Date.today).order(start: :asc) }
 
   validates :name, presence: true
 

@@ -1,6 +1,19 @@
-<h3><%= link_to trail.name, trail %></h3>
-<p>created by <%= trail.creator %></p>
-<p><%= trail.startdate %></p>
-<% if user_signed_in? && trail.permissions(current_user) %>
-  <%= link_to 'Delete', trail, method: :delete, data: { confirm: "You sure?" } %>
+<% if trail.valid? %>
+  <% if trail == @trails.first %>
+    <div class="nexttrail">
+      <h3>Next Trail:</h3>
+      <%= link_to trail.name, trail %>, <%= trail.startdate %><br />
+      <% if trail.prelube.present? %>
+        Prelube: <%= link_to trail.prelube.name, trail.prelube.location %><br />
+      <% end %>
+      When: <%= trail.startdate %>, <%= trail.starttime %>
+    </div>
+  <% else %>
+    <h3><%= link_to trail.name, trail %></h3>
+    <p>created by <%= trail.creator %></p>
+    <p><%= trail.startdate %></p>
+    <% if user_signed_in? && trail.permissions(current_user) %>
+      <%= link_to 'Delete', trail, method: :delete, data: { confirm: "You sure?" } %>
+    <% end %>
+  <% end %>
 <% end %>
