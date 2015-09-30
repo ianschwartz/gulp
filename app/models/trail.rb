@@ -8,11 +8,10 @@ class Trail < ActiveRecord::Base
   has_many :locations, through: :checks
   has_many :comments, as: :commentable
 
-
   belongs_to :user
 
   def creator
-    user.email
+    user.name
   end
 
   def permissions(u)
