@@ -22,5 +22,4 @@ class Location < ActiveRecord::Base
   def checklist
     checks.all.sort_by(&:start).reverse
   end
-
 end

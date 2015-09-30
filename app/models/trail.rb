@@ -1,5 +1,6 @@
 class Trail < ActiveRecord::Base
-  default_scope {order("start DESC")}
+  default_scope { order("start DESC") }
+  scope :upcoming, -> { where('start >= ?', Date.today).order(:start) }
 
   validates :name, presence: true
 
@@ -28,7 +29,11 @@ class Trail < ActiveRecord::Base
     start.strftime("%B %d, %Y")
   end
 
+  def starttime
+    start.strftime("%H:%M%p HST")
+  end
+
   def prelube
-    checks.where(checktype: 'Prelube')
+    checks.where(checktype: 'Prelube').first
   end
 end

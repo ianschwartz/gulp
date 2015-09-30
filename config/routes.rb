@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :bar_locations, only: [:create, :update]
   resources :outdoor_locations, only: [:create, :update]
   resources :checks, only: [:create, :destroy]
-  root 'trails#index'
+  resource :dashboard, only: [:show]
+  root 'dashboard#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
