@@ -38,4 +38,12 @@ class Trail < ActiveRecord::Base
   def prelube
     checks.where(checktype: 'Prelube').first
   end
+
+  def mappable
+    checks.last.mappable
+  end
+
+  def goodchecks
+    checks[0...-1]
+  end
 end

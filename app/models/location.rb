@@ -4,6 +4,9 @@ class Location < ActiveRecord::Base
   has_many :comments, as: :commentable
   belongs_to :place, polymorphic: true
 
+  geocoded_by :mappable
+  after_validation :geocode
+
   def mappable
     place.mappable
   end
@@ -22,5 +25,9 @@ class Location < ActiveRecord::Base
 
   def checklist
     checks.all.sort_by(&:start).reverse
+  end
+
+  def nearby
+    place.nearbys(3)
   end
 end

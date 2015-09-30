@@ -1,8 +1,13 @@
 <%= form_for @check do |f| -%>
   <b>Add a check:</b>
+  <%= @trail.goodchecks.count %>
   <div>
     <%= f.label :nearby_locations %><br/>
-    <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <% if @trail.goodchecks.count >= 1 %>
+      <%= f.collection_select :location_id, Location.near(@check.last_check.location), :id, :name %>
+    <% else %>
+      <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <% end %>
     <%= f.hidden_field :trail_id, value: @trail.id %>
   </div>
   <div>
@@ -10,5 +15,7 @@
     <%= f.select :checktype, 
       options_for_select([['Prelube','Prelube'],['Beer Check','Beer Check'],['On-In','On-In']], params[:checktype]) %>
   </div>
-  <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+  <div>
+    <%= f.submit "Add Check", :disable_with => 'Submiting...', class: "btn btn-primary btn-lg" %>
+  </div>
 <% end -%>

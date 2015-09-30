@@ -3,7 +3,7 @@ class OutdoorLocationsController < ApplicationController
 
   def create
     place = build_place
-    @location = Location.new(place: place)
+    @location = Location.new(place: place, latitude: place.latitude, longitude: place.longitude)
     if @location.save
       flash[:notice] = "Location added!"
       redirect_to locations_path
