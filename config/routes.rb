@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   resources :trails, except: [:new, :edit]
   resources :comments, only: [:create, :edit, :update, :destroy]
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   resources :outdoor_locations, only: [:create, :update]
   resources :checks, only: [:create, :destroy]
   resource :dashboard, only: [:show]
+  resources :kennels, only: [:show, :index]
   root 'dashboard#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

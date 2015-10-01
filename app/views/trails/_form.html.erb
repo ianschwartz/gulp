@@ -9,6 +9,8 @@
     <%= f.datetime_select :start, :ampm => true, :minute_step => 15 %>
   </div>
   <div>
+    <%= f.hidden_field(:kennel_id, :value => @trail.kennel.id) %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit %>
   </div>
 <% end %>

@@ -6,9 +6,10 @@ class Trail < ActiveRecord::Base
 
   has_many :checks, dependent: :destroy
   has_many :locations, through: :checks
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   belongs_to :user
+  belongs_to :kennel
 
   def creator
     user.name

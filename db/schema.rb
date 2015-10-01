@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930204500) do
+ActiveRecord::Schema.define(version: 20151001151509) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20150930204500) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "kennels", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "location"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,8 +77,10 @@ ActiveRecord::Schema.define(version: 20150930204500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "kennel_id"
   end
 
+  add_index "trails", ["kennel_id"], name: "index_trails_on_kennel_id"
   add_index "trails", ["user_id"], name: "index_trails_on_user_id"
 
   create_table "users", force: :cascade do |t|

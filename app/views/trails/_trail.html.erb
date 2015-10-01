@@ -1,8 +1,9 @@
 <% if trail.valid? %>
   <% if trail == @trails.first %>
     <div class="nexttrail">
-      <h3>Next Trail:</h3>
-      <%= link_to trail.name, trail %>, <%= trail.startdate %><br />
+      <h4>Next Trail:</h4>
+      <h3><%= link_to trail.name, trail %>, <%= trail.startdate %></h3><br />
+      <h4><%= @trail.kennel.name %></h4>
       <% if trail.prelube.present? %>
         Prelube: <%= link_to trail.prelube.name, trail.prelube.location %><br />
       <% end %>
@@ -10,8 +11,12 @@
     </div>
   <% else %>
     <h3><%= link_to trail.name, trail %></h3>
-    <p>created by <%= trail.creator %></p>
-    <p><%= trail.startdate %></p>
+    <p>created by <%= trail.creator %><br />
+    When: <%= trail.startdate %><br />
+    <% if trail.prelube.present? %>
+      Prelube: <%= link_to trail.prelube.name, trail.prelube.location %><br />
+    <% end %>
+    
     <% if user_signed_in? && trail.permissions(current_user) %>
       <%= link_to 'Delete', trail, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
