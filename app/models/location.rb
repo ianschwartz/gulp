@@ -8,15 +8,7 @@ class Location < ActiveRecord::Base
   after_validation :geocode
 
   def mappable
-    place.mappable
-  end
-
-  def latitude
-    place.latitude
-  end
-
-  def longitude
-    place.longitude
+    "#{latitude},#{longitude}"
   end
 
   def name
