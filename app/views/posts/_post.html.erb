@@ -1,0 +1,14 @@
+<% if post.posttype == "action" %>
+  <h3><b><%= post.body.html_safe %></b></h3>
+<% else %>
+  <h3><%= post.poster.name %> posted:</h3>
+  <%= simple_format(post.body).html_safe %>
+<% end %>
+<%= time_ago_in_words(post.created_at) %> ago<br />
+
+<% if post.poster == current_user %>
+  <% if post.posttype == "text" %>
+    <%= link_to 'Edit Post', edit_post_path(post) %>
+  <% end %>
+  <%= link_to 'Delete Post', post, method: :delete %>
+<% end %>

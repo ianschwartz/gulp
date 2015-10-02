@@ -3,7 +3,7 @@
     <div class="nexttrail">
       <h4>Next Trail:</h4>
       <h3><%= link_to trail.name, trail %>, <%= trail.startdate %></h3><br />
-      <h4><%= @trail.kennel.name %></h4>
+      <h4><%= trail.kennel.name %></h4>
       <% if trail.prelube.present? %>
         Prelube: <%= link_to trail.prelube.name, trail.prelube.location %><br />
       <% end %>

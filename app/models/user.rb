@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :trails
+  has_many :posts, as: :poster
 
   def feed
-    trails.upcoming
+    posts.order('created_at DESC')
   end
 end

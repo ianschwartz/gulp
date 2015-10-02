@@ -1,10 +1,7 @@
 class DashboardController < ApplicationController
   def show
-    if !user_signed_in? || current_user.trails.empty?
-      @trails = Trail.upcoming
-    else
-      @trails = current_user.feed
+    if user_signed_in?
+      @post = current_user.posts.new
     end
-    @next = @trails.last
   end
 end

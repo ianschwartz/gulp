@@ -11,6 +11,7 @@ class TrailsController < ApplicationController
   def create
     @trail = Trail.new(trail_params)
     if @trail.save
+      @trail.user.posts.create(body: "#{@trail.user.name} created a new trail! #{view_context.link_to(@trail.name, @trail)}", posttype: "action")
       flash[:notice] = "Trail added!"
       redirect_to @trail
     else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001151509) do
+ActiveRecord::Schema.define(version: 20151002140026) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string "name"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 20151001151509) do
     t.string "city"
     t.string "state"
   end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "poster_id"
+    t.string   "poster_type"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "posttype"
+  end
+
+  add_index "posts", ["poster_type", "poster_id"], name: "index_posts_on_poster_type_and_poster_id"
 
   create_table "trails", force: :cascade do |t|
     t.string   "name"
