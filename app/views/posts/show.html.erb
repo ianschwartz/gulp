@@ -1,0 +1,45 @@
+<div class="col-sm-6">
+  <%= render @post %>
+</div>
+<div class="col-sm-6">
+  <ul class="buttons">
+    <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Leave a comment</button></li>   
+  </ul>
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Leave a Comment</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-6">
+              <%= render 'comments/form' %>
+            </div>
+            <div class="col-xs-6">
+              &lt;b&gt;<b>bold</b>&lt;/b&gt;<br />
+              &lt;i&gt;<i>italic</i>&lt;/i&gt;<br />
+              &lt;u&gt;<u>underline</u>&lt;/u&gt;<br />
+              &lt;del&gt;<del>strikethrough</del>&lt;/del&gt;<br />
+              &lt;blockquote&gt;<blockquote>blockquote</blockquote>&lt;/blockquote&gt;<br />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6 comments">
+  <h4>Comments</h4>
+  <% if @post.comments.any? %>
+    <ul>
+      <%= render @post.comments %>
+    </ul>
+  <% end %>
+</div>

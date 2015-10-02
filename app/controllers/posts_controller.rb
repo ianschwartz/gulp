@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:update, :edit, :destroy]
-
+  before_action :set_post, except: [:new, :create]
   def create
     @post = Post.new(post_params)
     @post.posttype = "text"
@@ -34,6 +33,10 @@ class PostsController < ApplicationController
       flash[:alert] = "Post could not be saved. #{@trail.errors.full_messages}"
       redirect_to :back
     end
+  end
+
+  def show
+    @comment = @post.comments.new
   end
 
   private

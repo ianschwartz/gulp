@@ -1,14 +1,17 @@
 <% if post.posttype == "action" %>
   <h3><b><%= post.body.html_safe %></b></h3>
 <% else %>
-  <h3><%= post.poster.name %> posted:</h3>
-  <%= simple_format(post.body).html_safe %>
+  <div class="text-post">
+    <h3><%= post.poster.name %> posted:</h3>
+    <%= link_to simple_format(post.body).html_safe, post %>
+  </div>
 <% end %>
 <%= time_ago_in_words(post.created_at) %> ago<br />
 
 <% if post.poster == current_user %>
+  <%= link_to 'Comments', post, class: "btn btn-success btn-xs" %>  
   <% if post.posttype == "text" %>
-    <%= link_to 'Edit Post', edit_post_path(post) %>
+    <%= link_to 'Edit Post', edit_post_path(post), class: "btn btn-primary btn-xs" %>
   <% end %>
-  <%= link_to 'Delete Post', post, method: :delete %>
+  <%= link_to 'Delete Post', post, method: :delete, class: "btn btn-danger btn-xs" %>
 <% end %>

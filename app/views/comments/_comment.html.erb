@@ -1,6 +1,6 @@
 <% if comment.valid? %>
-  <li class="comment"><%= comment.user.name %> said:<br />
-  <%= comment.body %>
+  <li class="comment"><b><%= comment.user.name %></b> said:<br />
+  <%= simple_format(comment.body).html_safe %>
   <% if comment.user == current_user %>
   <%= link_to 'Edit Comment', edit_comment_path(comment), class: "btn btn-primary btn-xs" %>
    <%= link_to 'Delete Comment', comment, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs"  %>

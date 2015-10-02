@@ -83,6 +83,9 @@ nav {
   list-style: none;
 }
 
-.actionpost {
-  font-weight: bold;
+.text-post {
+  a {
+    text-decoration: none;
+    color: darkblue;
+  }
 }
