@@ -13,6 +13,20 @@
     <%= f.select :state, options_for_select([['AL','AL'], ['AK','AK'], ['AZ','AZ'], ['AR','AR'], ['CA','CA'], ['CO','CO'], ['CT','CT'], ['DE','DE'], ['FL','FL'], ['GA','GA'], ['HI','HI'], ['ID','ID'], ['IL','IL'], ['IN','IN'], ['IA','IA'], ['KS','KS'], ['KY','KY'], ['LA','LA'], ['ME','ME'], ['MD','MD'], ['MA','MA'], ['MI','MI'], ['MN','MN'], ['MS','MS'], ['MO','MO'], ['MT','MT'], ['NE','NE'], ['NV','NV'], ['NH','NH'], ['NJ','NJ'], ['NM','NM'], ['NY','NY'], ['NC','NC'], ['ND','ND'], ['OH','OH'], ['OK','OK'], ['OR','OR'], ['PA','PA'], ['RI','RI'], ['SC','SC'], ['SD','SD'], ['TN','TN'], ['TX','TX'], ['UT','UT'], ['VT','VT'], ['WA','WA'], ['WV','WV'], ['WI','WI'], ['WY','WY'], ['DC','DC']], params[:state]) %>
   </div>
   <div>
+    <%= f.label :contact_name %>
+    <%= f.text_field :contact %><br/>
+    <%= f.label :contact_phone %>
+    <%= f.text_field :phone %><br/>
+    <%= f.label :contact_email %>
+    <%= f.text_field :email %><br/>
+    <%= f.label :cheapest_beer_brand %>
+    <%= f.text_field :beer %><br/>
+    <%= f.label :beer_format %>
+    <%= f.text_field :format %><br/>
+    <%= f.label :beer_price %>
+    <%= f.text_field :price %>
+  </div>
+  <div>
     <%= f.submit "Submit", :disable_with => 'Submiting...' %>
   </div>
 <% end -%>

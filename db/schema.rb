@@ -11,15 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002140026) do
+ActiveRecord::Schema.define(version: 20151002195726) do
 
   create_table "bar_locations", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.float  "latitude"
-    t.float  "longitude"
-    t.string "city"
-    t.string "state"
+    t.string  "name"
+    t.string  "address"
+    t.float   "latitude"
+    t.float   "longitude"
+    t.string  "city"
+    t.string  "state"
+    t.string  "contact"
+    t.string  "phone"
+    t.string  "email"
+    t.string  "beer"
+    t.string  "format"
+    t.integer "price"
   end
 
   create_table "checks", force: :cascade do |t|
