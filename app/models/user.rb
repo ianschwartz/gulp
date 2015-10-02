@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true
+  validates_uniqueness_of :name
 
   has_many :trails
   has_many :posts, as: :poster

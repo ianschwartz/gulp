@@ -1,0 +1,10 @@
+<div class="col-sm-6">
+  <% if @user.posts.any? %>
+    <%= render @user.feed %>
+  <% else %>
+    <h3>Nothing here yet.</h3>
+  <% end %>
+</div>
+<div class="col-sm-6">
+  <%= link_to "Follow User", '#', class: "btn btn-primary btn-lg" %>
+</div>

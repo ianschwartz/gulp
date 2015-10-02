@@ -11,7 +11,7 @@
     </div>
   <% else %>
     <h3><%= link_to trail.name, trail %></h3>
-    <p>created by <%= trail.creator %><br />
+    <p>created by <%= link_to trail.creator, trail.user %><br />
     When: <%= trail.startdate %><br />
     <% if trail.prelube.present? %>
       Prelube: <%= link_to trail.prelube.name, trail.prelube.location %><br />

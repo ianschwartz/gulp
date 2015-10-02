@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
   resources :trails, except: [:new, :edit]
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :locations, except: [:create]
