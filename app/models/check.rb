@@ -30,7 +30,11 @@ class Check < ActiveRecord::Base
   end
 
   def last_check
-    trail.checks[0...-1].last
+    trail.last_check
+  end
+
+  def goodchecks?
+    trail.goodchecks.any?
   end
 
   def mappable
@@ -38,6 +42,6 @@ class Check < ActiveRecord::Base
   end
 
   def nearby
-    Location.near('Watertown, MA', 5)
+    location.nearby
   end
 end

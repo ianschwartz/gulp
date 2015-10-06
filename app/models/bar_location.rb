@@ -5,4 +5,8 @@ class BarLocation < ActiveRecord::Base
   def mappable
     name + ', ' + address + ', ' + city + ', ' + state
   end
+
+  def nearby
+    BarLocation.near(self) + OutdoorLocation.near(self)
+  end
 end

@@ -20,6 +20,6 @@ class Location < ActiveRecord::Base
   end
 
   def nearby
-    place.nearbys(3)
+    place.nearby
   end
 end

@@ -46,4 +46,9 @@ class Trail < ActiveRecord::Base
   def goodchecks
     checks[0...-1]
   end
+
+  def last_check
+    goodchecks.last.location.place
+  end
+
 end
