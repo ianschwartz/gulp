@@ -1,3 +1,20 @@
+<div class="col-xs-12 text-center">
+  <h2><%= @user.name %></h2>
+  <div class="stats">
+    <a href="<%= following_user_path(@user) %>">
+      <strong id="following" class="stat">
+        <%= @user.following.count %>
+      </strong>
+      following
+    </a>
+    <a href="<%= followers_user_path(@user) %>">
+      <strong id="followers" class="stat">
+        <%= @user.followers.count %>
+      </strong>
+      followers
+    </a>
+  </div>
+</div>
 <div class="col-sm-6">
   <% if @user.posts.any? %>
     <%= render @user.feed %>
@@ -6,5 +23,13 @@
   <% end %>
 </div>
 <div class="col-sm-6">
-  <%= link_to "Follow User", '#', class: "btn btn-primary btn-lg" %>
+  <% unless (current_user == @user) || !user_signed_in? %>
+    <div id="follow_form">
+      <% if current_user.following?(@user) %>
+        <%= render 'shared/unfollow' %>
+      <% else %>
+        <%= render 'shared/follow' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

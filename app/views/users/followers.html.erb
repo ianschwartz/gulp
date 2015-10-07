@@ -1,0 +1,9 @@
+<div class="col-sm-12 text-center">
+  <h3><%= link_to @user.name, @user %></h3>
+  <h4>Followers</h4>
+</div>
+<% @user.followers.each do |f| %>
+  <div class="col-sm-4">
+    <%= link_to f.name, f %>
+  </div>
+<% end %>

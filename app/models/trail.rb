@@ -7,6 +7,12 @@ class Trail < ActiveRecord::Base
   has_many :checks, dependent: :destroy
   has_many :locations, through: :checks
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+                                   as: :followable,
+                                   dependent: :destroy
+  has_many :followers, through: :passive_relationships,
+                       source: :user,
+                       foreign_key: :user_id
 
   belongs_to :user
   belongs_to :kennel

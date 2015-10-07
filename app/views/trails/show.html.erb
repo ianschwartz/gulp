@@ -14,6 +14,9 @@
 <div class="col-sm-6">
   <% if user_signed_in? %>
     <ul class="buttons">
+      <li><%= render 'follow' %>
+      </li>
+      
       <% if @trail.permissions(current_user) %> 
         <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Trail Details</button> </li>
         <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Add a Check</button> </li>
@@ -104,6 +107,17 @@
       </div>
     </div>
   <% end %> 
+</div>
+
+<div class="col-sm-6 followers">
+  <% if @trail.over %>
+    <h4>Who's Coming?</h4>
+  <% else %>
+    <h4>Who came?</h4>
+  <% end %>
+  <ul>
+    <%= render @trail.followers %>
+  </ul>
 </div>
 
 <div class="col-sm-6 comments">

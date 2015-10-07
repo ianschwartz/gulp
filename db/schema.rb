@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002195726) do
+ActiveRecord::Schema.define(version: 20151006161051) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string  "name"
@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(version: 20151002195726) do
   end
 
   add_index "posts", ["poster_type", "poster_id"], name: "index_posts_on_poster_type_and_poster_id"
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "followable_id"
+    t.string  "followable_type"
+    t.integer "user_id"
+  end
+
+  add_index "relationships", ["followable_type", "followable_id"], name: "index_relationships_on_followable_type_and_followable_id"
+  add_index "relationships", ["user_id"], name: "index_relationships_on_user_id"
 
   create_table "trails", force: :cascade do |t|
     t.string   "name"

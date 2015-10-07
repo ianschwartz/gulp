@@ -1,0 +1,5 @@
+<%= form_for @follow do |f| %>
+  <%= f.hidden_field :followable_id, value: @follow.followable_id %>
+  <%= f.hidden_field :followable_type, value: @follow.followable_type %>
+  <%= f.submit "Follow", class: "btn btn-primary btn-lg" %>
+<% end %>

@@ -1,0 +1,10 @@
+
+<% if current_user.coming_on_trail?(@trail) %>
+    <%= link_to "Unjoin Trail", @follow, method: :delete, class: "btn btn-danger btn-lg" %>
+<% else %>
+  <%= form_for @follow do |f| %>
+    <%= f.hidden_field :followable_id, value: @follow.followable_id %>
+    <%= f.hidden_field :followable_type, value: @follow.followable_type %>
+    <%= f.submit "Join Trail", class: "btn btn-primary btn-lg" %>
+  <% end %>
+<% end %>

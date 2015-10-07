@@ -12,7 +12,19 @@
   <% if user_signed_in? %>
     <ul class="buttons">
       <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Create a trail!</button> </li>
-      <li><%= link_to "Follow Kennel", '#', class: "btn btn-primary btn-lg" %></li>
+
+      <div class="col-sm-6">
+        <% unless !user_signed_in? %>
+          <div id="follow_form">
+            <% if current_user.following?(@kennel) %>
+              <%= render 'shared/unfollow' %>
+            <% else %>
+              <%= render 'shared/follow' %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>      
+
     </ul>
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">

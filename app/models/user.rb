@@ -8,8 +8,53 @@ class User < ActiveRecord::Base
 
   has_many :trails
   has_many :posts, as: :poster
+  has_many :active_relationships, class_name: "Relationship",
+                                  foreign_key: "user_id",
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+                                   as: :followable,
+                                   dependent: :destroy
+  has_many :followed_users, through: :active_relationships, 
+                            source: :followable, 
+                            source_type: 'User'
+  has_many :followed_trails, through: :active_relationships, 
+                            source: :followable, 
+                            source_type: 'Trail'
+  has_many :followed_kennels, through: :active_relationships, 
+                            source: :followable, 
+                            source_type: 'Kennel'
+  has_many :followers, through: :passive_relationships,
+                       source: :user,
+                       foreign_key: :user_id
+  has_many :followers, through: :passive_relationships,
+                       source: :user,
+                       foreign_key: :user_id
+
 
   def feed
     posts.order('created_at DESC')
+  end
+
+  # Follows a user.
+  def follow(followable)
+    active_relationships.create(followable: followable)
+  end
+
+  def following
+    followed_users + followed_kennels
+  end
+
+  # Unfollows a user.
+  def unfollow(followable)
+    active_relationships.find_by(followable_id: followable.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(followable)
+    following.include?(followable)
+  end
+
+  def coming_on_trail?(followable)
+    followed_trails.include?(followable)
   end
 end
