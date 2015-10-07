@@ -1,11 +1,2 @@
 <h3><%= link_to kennel.name, kennel %></h3>
-<div class="row">
-  <div class="col-sm-6">
-    <%= kennel.location %>
-  </div>
-    <% if user_signed_in? %> 
-      <div class="col-sm-6">
-        <%= link_to 'Follow Kennel', '#', class: "btn btn-primary btn-xs" %>
-      </div>
-    <% end %>
-</div>
+<%= kennel.location %>

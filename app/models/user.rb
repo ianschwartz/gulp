@@ -32,7 +32,15 @@ class User < ActiveRecord::Base
 
 
   def feed
-    posts.order('created_at DESC')
+    posts
+  end
+
+  def dashboard
+    Post.where("poster_id IN (?) OR poster_id = ?", followed_user_ids, id)
+  end
+
+  def upcoming_trails
+    (Trail.upcoming.where("kennel_id IN (?) or kennel_id = ?", followed_kennel_ids, id)).order('start ')
   end
 
   # Follows a user.

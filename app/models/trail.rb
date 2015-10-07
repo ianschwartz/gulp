@@ -1,5 +1,5 @@
 class Trail < ActiveRecord::Base
-  scope :upcoming, -> { where('start >= ?', Date.today).order('start DESC') }
+  scope :upcoming, -> { where('start >= ?', Date.today).order('start ASC') }
   scope :calendar, -> { where('start >= ?', Date.today).order(start: :asc) }
 
   validates :name, presence: true
