@@ -2,11 +2,7 @@
   <b>Add a check:</b>
   <div>
     <%= f.label :nearby_locations %><br/>
-    <% if @check.goodchecks? %>
-      <%= f.collection_select :location_id, @trail.last_check.nearby, :id, :name %>
-    <% else %>
-      <%= f.collection_select :location_id, Location.all, :id, :name %>
-    <% end %>
+    <%= f.collection_select :location_id, @trail.nearby, :id, :name %>
     <%= f.hidden_field :trail_id, value: @trail.id %>
   </div>
   <div>

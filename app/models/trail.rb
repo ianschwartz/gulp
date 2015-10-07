@@ -57,4 +57,11 @@ class Trail < ActiveRecord::Base
     goodchecks.last.location.place
   end
 
+  def nearby
+    if goodchecks.any?
+      last_check.nearby
+    else
+      kennel.nearby
+    end
+  end
 end
