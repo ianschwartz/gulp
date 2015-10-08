@@ -1,0 +1,7 @@
+
+<ul class="buttons">
+  <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Location Details</button></li>
+  <li><%= link_to "Delete Location", @location, class: "btn btn-danger btn-lg", method: :delete %></li>
+  <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#commentform">Leave a Comment</button></li>
+  <li><%= link_to "Add to a Trail", new_location_check_path(@location), class: "btn btn-success btn-lg" %></li>
+</ul>

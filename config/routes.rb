@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :trails, except: [:new, :edit]
   resources :comments, only: [:create, :edit, :update, :destroy]
-  resources :locations, except: [:create]
+  resources :locations, except: [:create] do
+    resources :checks, only: [:new]
+  end
   resources :bar_locations, only: [:create, :update]
   resources :outdoor_locations, only: [:create, :update]
   resources :checks, only: [:create, :destroy]

@@ -65,4 +65,8 @@ class User < ActiveRecord::Base
   def coming_on_trail?(followable)
     followed_trails.include?(followable)
   end
+
+  def has_trails?
+    trails.any?
+  end
 end

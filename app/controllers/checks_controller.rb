@@ -2,6 +2,11 @@ class ChecksController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user_create, only: [:create]
   before_action :correct_user_destroy, only: [:destroy]
+  before_action :user_has_trails?, only: [:new]
+
+  def new
+    @check = Check.new(location_id: params[:location_id])
+  end
 
   def create
     @check = Check.new(check_params)
@@ -35,5 +40,12 @@ class ChecksController < ApplicationController
   def correct_user_destroy
     @trail = Check.find(params[:id]).trail
     redirect_to root_url unless @trail.permissions(current_user)
+  end
+
+  def user_has_trails?
+    unless current_user.has_trails?
+      flash[:alert] = "You haven't created any trails!"
+      redirect_to :back
+    end
   end
 end
