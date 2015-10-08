@@ -9,6 +9,14 @@
     <%= f.datetime_select :start, :ampm => true, :minute_step => 15 %>
   </div>
   <div>
+    <%= f.label :price, "Hash Cash" %>
+    <%= f.text_field :price, size: "2" %>
+  </div>  
+  <div>
+    <%= f.label :description, "Trail Description" %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
     <%= f.hidden_field(:kennel_id, :value => @trail.kennel.id) %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit %>

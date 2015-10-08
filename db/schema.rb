@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008151822) do
+ActiveRecord::Schema.define(version: 20151008211941) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string  "name"
@@ -99,10 +99,12 @@ ActiveRecord::Schema.define(version: 20151008151822) do
   create_table "trails", force: :cascade do |t|
     t.string   "name"
     t.datetime "start"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.integer  "kennel_id"
+    t.integer  "price"
+    t.text     "description"
   end
 
   add_index "trails", ["kennel_id"], name: "index_trails_on_kennel_id"

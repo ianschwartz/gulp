@@ -1,9 +1,11 @@
-<div class="col-sm-12 location">
+<div class="col-sm-8 col-sm-offset-2 location">
   <h2><%= @trail.name %></h2>
   <h4><%= link_to @trail.kennel.name, @trail.kennel %></h4>
   <p>
     Date: <%= @trail.start.strftime("%B %d, %Y") %><br />
     Time: <%= @trail.start.strftime("%k:%M HST") %><br />
+    How Much: $<%= @trail.price %><br />
+    Description: <%= @trail.description %>
   </p>
 </div>
 

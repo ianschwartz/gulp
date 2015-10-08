@@ -54,7 +54,7 @@ class TrailsController < ApplicationController
   private
 
   def trail_params
-    params.require(:trail).permit(:name, :start, :kennel_id, :user_id)
+    params.require(:trail).permit(:name, :start, :kennel_id, :user_id, :price, :description)
   end
 
   def set_trail
@@ -63,10 +63,9 @@ class TrailsController < ApplicationController
 
   def correct_user
     @trail = Trail.find(params[:id])
-    unless @trail.permissions(current_user) do
+    unless @trail.permissions(current_user)
       flash[:alert] = "You aren't authorized to edit this trail"
       redirect_to @trail
     end
   end
-end
 end
