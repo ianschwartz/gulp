@@ -4,8 +4,6 @@ class BarLocationsController < ApplicationController
   def create
     place = build_place
     @location = Location.new(place: place)
-    @location.latitude = @location.place.latitude
-    @location.longitude = @location.place.longitude
     if @location.save
       flash[:notice] = "Location added!"
       redirect_to locations_path
