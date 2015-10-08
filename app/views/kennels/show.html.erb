@@ -2,6 +2,7 @@
   <h2><%= @kennel.name %></h2>
 </div>
 <div class="col-sm-6">
+  <h4>Upcoming Trails:</h4>
   <% if @trails.any? %>
     <%= render @trails %>
   <% else %>

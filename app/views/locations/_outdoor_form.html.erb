@@ -1,22 +1,32 @@
-<%= form_for @outdoor_location do |f| -%>
-  <div>
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="col-sm-6">
+    <%= form_for @outdoor_location do |f| -%>
+      <div>
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label :latitude, "Latitude" %>
+        <%= f.text_field :latitude %>
+      </div>
+      <div>
+        <%= f.label :longitude, "Longitude" %>
+        <%= f.text_field :longitude %>
+      </div>
+       <div>
+        <%= f.label :city, "City" %>
+        <%= f.text_field :city %>
+        <%= f.label :state, "State" %>
+        <%= f.text_field :state, :size => "2" %>
+      </div>
+      <div>
+        <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+      </div>
+    <% end -%>
   </div>
-  <div>
-    <%= f.label :latitude, "Latitude" %>
-    <%= f.text_field :latitude %>
+  <div class="col-sm-6">
+    Gulp will try to figure out the latitude and longitude of your location. 
+    Be as <strong>specific</strong> as you can.<br /> 
+    If you want to enter the lat and long yourself, you can find it using <%= link_to "this method.", "https://support.google.com/maps/answer/18539?hl=en", target: "_blank" %>
   </div>
-  <div>
-    <%= f.label :longitude, "Longitude" %>
-    <%= f.text_field :longitude %>
-  </div>
-   <div>
-    <%= f.label :city, "City" %>
-    <%= f.text_field :city %>
-    <%= f.select :state, options_for_select([['AL','AL'], ['AK','AK'], ['AZ','AZ'], ['AR','AR'], ['CA','CA'], ['CO','CO'], ['CT','CT'], ['DE','DE'], ['FL','FL'], ['GA','GA'], ['HI','HI'], ['ID','ID'], ['IL','IL'], ['IN','IN'], ['IA','IA'], ['KS','KS'], ['KY','KY'], ['LA','LA'], ['ME','ME'], ['MD','MD'], ['MA','MA'], ['MI','MI'], ['MN','MN'], ['MS','MS'], ['MO','MO'], ['MT','MT'], ['NE','NE'], ['NV','NV'], ['NH','NH'], ['NJ','NJ'], ['NM','NM'], ['NY','NY'], ['NC','NC'], ['ND','ND'], ['OH','OH'], ['OK','OK'], ['OR','OR'], ['PA','PA'], ['RI','RI'], ['SC','SC'], ['SD','SD'], ['TN','TN'], ['TX','TX'], ['UT','UT'], ['VT','VT'], ['WA','WA'], ['WV','WV'], ['WI','WI'], ['WY','WY'], ['DC','DC']], params[:state]) %>
-  </div>
-  <div>
-    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-  </div>
-<% end -%>
+</div>

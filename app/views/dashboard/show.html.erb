@@ -1,16 +1,19 @@
-<% if user_signed_in? && current_user.dashboard.any? %>
+<% if user_signed_in? %>
   <div class="col-sm-6">
-    <%= render current_user.dashboard %>
+    <% if current_user.dashboard.any? %>
+      <%= render current_user.dashboard %>
+    <% end %>
   </div>
   <div class="col-sm-6">
     <%= render 'buttons' %>
+    <h4>My Upcoming Trails:</h4>
     <% if current_user.upcoming_trails.any? %>
       <%= render current_user.upcoming_trails %>
     <% end %>
   </div>
 <% else %>
-  <div class="col-sm-6">
-      <h3>Congratulations on signing up for Gulp!</h3>
-      Your feed will eventually go here. It will be made up of your posts as well as posts by your fellow hashers. You'll also see upcoming trails once you start following some kennels!
+  <div class="col-sm-8 col-sm-offset-2 text-center">
+    <h3>What the hell is this?</h3>
+    A unique social network for the <%= link_to "Hash House Harriers", "https://en.wikipedia.org/wiki/Hash_House_Harriers" %>.
   </div>
 <% end %>

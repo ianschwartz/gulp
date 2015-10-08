@@ -26,11 +26,7 @@ class Trail < ActiveRecord::Base
   end
 
   def over
-    if startdate < Time.now.strftime("%B %d, %Y")
-      false
-    else
-      true
-    end
+    startdate < Time.now.strftime("%B %d, %Y")
   end
 
   def startdate
