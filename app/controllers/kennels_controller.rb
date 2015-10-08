@@ -7,7 +7,7 @@ class KennelsController < ApplicationController
     @kennel = Kennel.find(params[:id])
     @trails = @kennel.trails.calendar
     @trail = @kennel.trails.new
-    if !current_user.following?(@kennel)
+    if !user_signed_in? || !current_user.following?(@kennel)
       @follow = @kennel.passive_relationships.new
     else
       @follow = current_user.active_relationships.find_by(followable_id: @kennel.id)
