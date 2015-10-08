@@ -5,7 +5,7 @@
     Date: <%= @trail.start.strftime("%B %d, %Y") %><br />
     Time: <%= @trail.start.strftime("%k:%M HST") %><br />
     How Much: $<%= @trail.price %><br />
-    Description: <%= @trail.description %>
+    Description: <%= simple_format(@trail.description).html_safe %>
   </p>
 </div>
 
