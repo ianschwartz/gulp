@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008211941) do
+ActiveRecord::Schema.define(version: 20151008213050) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string  "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151008211941) do
     t.datetime "updated_at", null: false
     t.string   "location"
     t.text     "rules"
+    t.string   "website"
   end
 
   create_table "locations", force: :cascade do |t|
