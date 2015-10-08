@@ -22,7 +22,15 @@
             <h4 class="modal-title">Add a new trail</h4>
           </div>
           <div class="modal-body">
-            <%= render 'form' %>
+            <div class="row">
+              <div class="col-sm-6">
+                <%= render 'form' %>
+              </div>
+              <div class="col-sm-6">
+                <h4>Rules</h4>
+                <%= @trail.kennel.rules %>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
