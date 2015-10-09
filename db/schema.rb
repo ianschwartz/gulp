@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151009192652) do
+ActiveRecord::Schema.define(version: 20151009204827) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string  "name"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20151009192652) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.boolean  "verified"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
