@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008213050) do
+ActiveRecord::Schema.define(version: 20151009192652) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string  "name"
@@ -129,5 +129,14 @@ ActiveRecord::Schema.define(version: 20151008213050) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "verifications", force: :cascade do |t|
+    t.integer  "verifier_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "verifications", ["verifier_id", "user_id"], name: "index_verifications_on_verifier_id_and_user_id", unique: true
 
 end

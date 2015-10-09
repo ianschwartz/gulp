@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships,
                        source: :user,
                        foreign_key: :user_id
-
+  has_many :verifications
+  has_many :verifiers, through: :verifications, source: :verifier
 
   def feed
     posts
@@ -68,5 +69,9 @@ class User < ActiveRecord::Base
 
   def has_trails?
     trails.any?
+  end
+
+  def verified?
+    verifications.count >= 3
   end
 end

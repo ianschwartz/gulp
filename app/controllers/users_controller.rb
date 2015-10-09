@@ -15,6 +15,12 @@ class UsersController < ApplicationController
   def followers
   end
 
+  def verify
+    current_user.verify(@user)
+    @user.save
+    redirect_to :back
+  end
+
   private
 
   def set_user

@@ -1,28 +1,33 @@
 <div class="col-sm-12 location">
   <h2><%= link_to @location.name, @location %></h2>
   <% if @location.place_type == "BarLocation" && user_signed_in? %>
-    <div class="row">
-      <div class="col-sm-6">
-        Contact: <%= @location.place.contact %><br />
-        Phone: <%= @location.place.phone %><br />
-        Email: <%= @location.place.email %>
+    <% if user_signed_in? && current_user.verified? %>
+      <div class="row">
+        <div class="col-sm-6">
+          Contact: <%= @location.place.contact %><br />
+          Phone: <%= @location.place.phone %><br />
+          Email: <%= @location.place.email %>
+        </div>
+        <div class="col-sm-6">
+          Beer: <%= @location.place.beer %><br />
+          Format: <%= @location.place.format %><br />
+          Price: <%= @location.place.price %>
+        </div>
       </div>
-      <div class="col-sm-6">
-        Beer: <%= @location.place.beer %><br />
-        Format: <%= @location.place.format %><br />
-        Price: <%= @location.place.price %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 <div class="col-xs-7">
-  <a href="https://maps.google.com?q=<%= @location.place.latitude %>,<%= @location.place.longitude %>">
-    <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x400&maptype=roadmap\&markers=size:mid%7Ccolor:red%7C<%= @location.place.latitude %>,<%= @location.place.longitude %>&key=AIzaSyB-ff0StKT8E_pKvXCiZBYEOsUVryVA3z4">
-  </a>
+  <% if user_signed_in? && current_user.verified? %>
+    <a href="https://maps.google.com?q=<%= @location.place.latitude %>,<%= @location.place.longitude %>">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x400&maptype=roadmap\&markers=size:mid%7Ccolor:red%7C<%= @location.place.latitude %>,<%= @location.place.longitude %>&key=AIzaSyB-ff0StKT8E_pKvXCiZBYEOsUVryVA3z4">
+    </a>
+  <% end %>
 </div>
 <div class="col-xs-4">
-  <% if user_signed_in? %><%= render 'buttons' %>
-<%= render 'modals' %>
+  <% if user_signed_in? %>
+    <%= render 'buttons' %>
+    <%= render 'modals' %>
   <% else %>
     <ul class="buttons">
       <li><%= link_to "Sign In!", new_user_session_path, class: "btn btn-info btn-lg" %></li>
