@@ -8,29 +8,34 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-      <div class="col-sm-12 logo">
-        <%= link_to image_tag('hashfoot.gif', alt: "GULP"), root_path %>
-      </div>
-      <nav>
-        <ul class="col-sm-6 col-sm-offset-3">
-          <li><%= link_to 'Home', root_path %></li>
-          <% if user_signed_in? %>
-            Signed in as: <%= link_to current_user.name, current_user %><br />
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <% end %>
-          <li><%= link_to 'All Locations', locations_path %></li>
-          <li><%= link_to 'All Kennels', kennels_path %></li>
-        </ul>
-      </nav>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    
-      <%= yield %>
+  <div class="row">
+    <div class="col-sm-12 logo">
+      <%= link_to image_tag('hashfoot.gif', alt: "GULP"), root_path %>
     </div>
+    <nav>
+      <ul class="col-sm-6 col-sm-offset-3">
+        <li><%= link_to 'Home', root_path %></li>
+        <% if user_signed_in? %>
+          Signed in as: <%= link_to current_user.name, current_user %><br />
+          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <% end %>
+        <li><%= link_to 'All Locations', locations_path %></li>
+        <li><%= link_to 'All Kennels', kennels_path %></li>
+      </ul>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <%= yield %>
+
   </div>
+  <div class="col-sm-12 footer">
+    Gulp was built by <%= link_to "Ian Schwartz", "mailto:ianschwartz.webdev@gmail.com" %>. 
+  </div>
+</div>
+
 </body>
 </html>
