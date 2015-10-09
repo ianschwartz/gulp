@@ -25,9 +25,9 @@ class TrailsController < ApplicationController
     @bar_location = BarLocation.new
     @outdoor_location = OutdoorLocation.new
     @comment = @trail.comments.new
-    if !current_user.coming_on_trail?(@trail)
+    if user_signed_in? && !current_user.coming_on_trail?(@trail)
       @follow = @trail.passive_relationships.new
-    else
+    elsif user_signed_in?
       @follow = current_user.active_relationships.find_by(followable_id: @trail.id)
     end
   end

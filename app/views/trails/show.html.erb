@@ -19,7 +19,7 @@
       <li><%= render 'follow' %>
       </li>
       
-      <% if @trail.permissions(current_user) %> 
+      <% if user_signed_in? && @trail.permissions(current_user) %> 
         <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Edit Trail Details</button> </li>
         <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Add a Check</button> </li>
         <li><%= link_to "Delete Trail", @trail, class: "btn btn-danger btn-lg", method: :delete, data: {confirm: "You sure?"} %></li>
