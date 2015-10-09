@@ -26,6 +26,6 @@ class Location < ActiveRecord::Base
   end
 
   def nearby
-    BarLocation.near(self.mappable).map {|x| [x.name, "Location:#{x.location.id}"]} + OutdoorLocation.near(self.mappable).map {|x| [x.name, "Location:#{x.location.id}"]}
+    BarLocation.near(mappable, 2).map {|x| [x.name, "Location:#{x.location.id}"]} + OutdoorLocation.near(mappable, 2).map {|x| [x.name, "Location:#{x.location.id}"]}
   end
 end

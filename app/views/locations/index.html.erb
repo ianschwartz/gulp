@@ -1,4 +1,13 @@
 <div class="col-sm-6">
+  <%= form_tag locations_path, method: :get do %>
+    <%= label :search, "Search locations near : " %>
+    <%= text_field_tag :search, params[:search] %><br />
+
+    <%= label :distance, "Distance in miles : " %>
+    <%= text_field_tag :distance, params[:distance] %>
+
+    <%= submit_tag "Search" %>
+  <% end %>
   <% if @locations.any? %>
     <%= render @locations %>
   <% end %>

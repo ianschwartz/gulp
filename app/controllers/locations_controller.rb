@@ -3,7 +3,12 @@ class LocationsController < ApplicationController
   before_action :set_location, except: [:index, :new, :create]
 
   def index
-    @locations = Location.all
+    if params[:search].present?
+      @locations = (BarLocation.near(params[:search], params[:distance || 2]) + OutdoorLocation.near(params[:search], params[:distance || 2]))
+    else
+      @locations = BarLocation.all + OutdoorLocation.all
+    end
+
     @bar_location = BarLocation.new
     @outdoor_location = OutdoorLocation.new
   end
