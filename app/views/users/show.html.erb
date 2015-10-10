@@ -17,10 +17,8 @@
     <div>
     <% unless @user.verified? %>
       <% if user_signed_in? && @user != current_user && current_user.verified %>
-        <%= button_to "Verify", action: 'create', controller: 'verifications', id: @user.id %>
+        <%= button_to "Verify User", action: 'create', controller: 'verifications', id: @user.id %>
       <% end %>
-      <small><%= @user.name %> needs <%= 3 - @user.verifiers.count %> more verifications</small>
-    <% end %>
   </div>
 </div>
 <div class="col-sm-6">

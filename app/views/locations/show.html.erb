@@ -1,8 +1,8 @@
 <div class="col-sm-12 location">
   <h2><%= link_to @location.name, @location %></h2>
   <% if @location.place_type == "BarLocation" && user_signed_in? %>
-    <% if user_signed_in? && current_user.verified? %>
-      <div class="row">
+    <div class="row">
+      <% if current_user.verified? %>
         <div class="col-sm-6">
           Contact: <%= @location.place.contact %><br />
           Phone: <%= @location.place.phone %><br />
@@ -13,8 +13,12 @@
           Format: <%= @location.place.format %><br />
           Price: <%= @location.place.price %>
         </div>
-      </div>
-    <% end %>
+      <% else %>
+        <div class="col-sm-6 col-sm-offset-3">
+          You'll be able to see location details once you are verified.
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 <div class="col-xs-7">
@@ -22,6 +26,8 @@
     <a href="https://maps.google.com?q=<%= @location.place.latitude %>,<%= @location.place.longitude %>">
       <img src="https://maps.googleapis.com/maps/api/staticmap?size=400x400&maptype=roadmap\&markers=size:mid%7Ccolor:red%7C<%= @location.place.latitude %>,<%= @location.place.longitude %>&key=AIzaSyB-ff0StKT8E_pKvXCiZBYEOsUVryVA3z4">
     </a>
+  <% else %>
+    There will be a map of the location here once you get verified!
   <% end %>
 </div>
 <div class="col-xs-4">

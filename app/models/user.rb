@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def verified?
-    verifications.count >= 3 || verified == true
+    verifications.count >= 1 || verified == true 
   end
 
   def verify!
