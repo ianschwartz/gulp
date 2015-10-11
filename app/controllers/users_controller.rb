@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [:index]
   
   def show
     if !current_user.following?(@user)
@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     current_user.verify(@user)
     @user.save
     redirect_to :back
+  end
+
+  def index
+    @users = User.all
   end
 
   private
