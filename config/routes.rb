@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :locations, except: [:create] do
     resources :checks, only: [:new]
   end
-  resource :verifications, only: [:create]
   resources :bar_locations, only: [:create, :update]
   resources :outdoor_locations, only: [:create, :update]
   resources :checks, only: [:create, :destroy]

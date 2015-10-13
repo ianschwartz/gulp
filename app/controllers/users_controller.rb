@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:index]
+  before_filter :authenticate_user!
   
   def show
     if !current_user.following?(@user)
@@ -13,12 +14,6 @@ class UsersController < ApplicationController
   end
 
   def followers
-  end
-
-  def verify
-    current_user.verify(@user)
-    @user.save
-    redirect_to :back
   end
 
   def index
