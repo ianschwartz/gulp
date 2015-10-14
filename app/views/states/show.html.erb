@@ -1,0 +1,13 @@
+<div class="col-sm-6">
+  <% if @state.kennels.present? %> 
+    <%= render @state.kennels %>
+  <% else %>
+    Nothing yet
+  <% end %>
+</div>
+<div class="col-sm-10 col-sm-offset-1">
+  <br />
+  <div class="jumbotron text-center">
+    Don't see your kennel? <%= link_to "Ask to have it added", "mailto:queerandfoamy@gmail.com" %>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008213050) do
+ActiveRecord::Schema.define(version: 20151014152742) do
 
   create_table "bar_locations", force: :cascade do |t|
     t.string  "name"
@@ -58,7 +58,10 @@ ActiveRecord::Schema.define(version: 20151008213050) do
     t.string   "location"
     t.text     "rules"
     t.string   "website"
+    t.integer  "state_id"
   end
+
+  add_index "kennels", ["state_id"], name: "index_kennels_on_state_id"
 
   create_table "locations", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -96,6 +99,12 @@ ActiveRecord::Schema.define(version: 20151008213050) do
 
   add_index "relationships", ["followable_type", "followable_id"], name: "index_relationships_on_followable_type_and_followable_id"
   add_index "relationships", ["user_id"], name: "index_relationships_on_user_id"
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "trails", force: :cascade do |t|
     t.string   "name"

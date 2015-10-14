@@ -10,6 +10,7 @@ class Kennel < ActiveRecord::Base
   has_many :followers, through: :passive_relationships,
                        source: :user,
                        foreign_key: :user_id
+  belongs_to :state
 
   def nearby
     BarLocation.near(self.location) + OutdoorLocation.near(self.location)

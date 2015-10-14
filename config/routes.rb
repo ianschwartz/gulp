@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
+  resources :states, only: [:index, :show]
   resources :trails, except: [:new, :edit]
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :locations, except: [:create] do
